@@ -1,19 +1,24 @@
-const grid = document.getElementById("grid");
-const colorPicker = document.getElementById("colorPicker");
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
 
-const size = 64; // 64x64 büyük canvas
+canvas.width = 500;
+canvas.height = 500;
 
-// Grid oluştur
-for (let i = 0; i < size * size; i++) {
-    const div = document.createElement("div");
-    div.classList.add("pixel");
+let color = document.getElementById("colorPicker").value;
 
-    div.addEventListener("click", () => {
-        div.style.backgroundColor = colorPicker.value;
-    });
+document.getElementById("colorPicker").addEventListener("input", (e) => {
+    color = e.target.value;
+});
 
-    grid.appendChild(div);
-}
+canvas.addEventListener("mousedown", (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const x = Math.floor((e.clientX - rect.left));
+    const y = Math.floor((e.clientY - rect.top));
+
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, 10, 10); // 10x10 pixel blok
+});
+
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
@@ -38,3 +43,4 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 set(ref(db, "pixels/" + index), colorPicker.value);
+
