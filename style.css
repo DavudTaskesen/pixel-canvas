@@ -1,37 +1,22 @@
 body {
-    font-family: Arial;
-    background: #222;
-    color: #fff;
-
-    /* ORTALAMA GARANTİ */
-    display: flex;
-    flex-direction: column;
-    align-items: center;   /* yatay ortalama */
-    justify-content: flex-start;
-    height: 100vh;
-    margin: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f2f2f2;
 }
 
 h1 {
     margin-top: 20px;
 }
 
-#colorPicker {
-    margin: 10px 0;
+.controls {
+    margin: 20px;
 }
 
-/* GRID TAM ORTADA */
-#grid {
-    display: grid;
-    grid-template-columns: repeat(64, 12px);
-    grid-template-rows: repeat(64, 12px);
-    gap: 0; /* çizgi yok */
-    padding: 0;
-}
-
-.pixel {
-    width: 12px;
-    height: 12px;
-    background: #111;
-    cursor: pointer;
+canvas {
+    background: white;
+    border: 2px solid #000;
+    width: 500px;
+    height: 500px;
+    image-rendering: pixelated;
+    cursor: crosshair;
 }
